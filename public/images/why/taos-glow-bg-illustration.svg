@@ -1,0 +1,32 @@
+<svg width="1436" height="1239" viewBox="0 0 1436 1239" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_233_4665" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="1436" height="1239">
+<path d="M0 0H1436V1239H0V0Z" fill="black"/>
+</mask>
+<g mask="url(#mask0_233_4665)">
+<g filter="url(#filter0_f_233_4665)">
+<circle cx="720.5" cy="766.5" r="412.5" fill="#0A43B5"/>
+</g>
+<g filter="url(#filter1_f_233_4665)">
+<circle cx="720.5" cy="766.5" r="284.5" fill="#0047D4"/>
+</g>
+<g opacity="0.3">
+<circle opacity="0.1" cx="719" cy="785" r="515.5" stroke="white"/>
+<circle opacity="0.15" cx="719" cy="785" r="399.373" stroke="white" stroke-dasharray="4 4"/>
+<circle opacity="0.2" cx="719" cy="785" r="282.15" stroke="white"/>
+<circle cx="380.478" cy="396.083" r="10.4554" stroke="#132E65"/>
+<circle cx="380.478" cy="396.083" r="3.88217" fill="#14264B" stroke="#132E65"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_f_233_4665" x="-226" y="-180" width="1893" height="1893" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="267" result="effect1_foregroundBlur_233_4665"/>
+</filter>
+<filter id="filter1_f_233_4665" x="212" y="258" width="1017" height="1017" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="112" result="effect1_foregroundBlur_233_4665"/>
+</filter>
+</defs>
+</svg>
