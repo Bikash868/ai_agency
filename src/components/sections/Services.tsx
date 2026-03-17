@@ -44,7 +44,7 @@ export function Services() {
               variants={fadeInUp}
               whileHover={{ y: -6 }}
               transition={{ duration: 0.3 }}
-              className="group relative overflow-hidden rounded-2xl border border-indigo-500/10 bg-surface p-8 transition-all duration-300 hover:border-indigo-500/30 hover:shadow-lg hover:shadow-indigo-500/5"
+              className="glass-card group relative overflow-hidden rounded-2xl p-8 transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/5"
             >
               <div className="grid-overlay pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-40" />
 

@@ -45,8 +45,8 @@ export function Process() {
                     i % 2 === 0 ? "md:text-right" : "md:text-left"
                   }`}
                 >
-                  <div className="inline-block rounded-2xl border border-indigo-500/10 bg-surface p-8 text-left transition-all duration-300 hover:border-indigo-500/25 hover:shadow-lg hover:shadow-indigo-500/5">
-                    <span className="mb-3 inline-block bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-3xl font-bold text-transparent">
+                  <div className="glass-card inline-block rounded-2xl p-8 text-left transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/5">
+                    <span className="mb-3 inline-block text-3xl font-bold text-white/25">
                       {step.step}
                     </span>
                     <h3 className="mb-2 text-xl font-bold text-white">

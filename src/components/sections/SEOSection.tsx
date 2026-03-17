@@ -2,9 +2,10 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { Check } from "lucide-react";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { fadeInUp } from "@/lib/motion";
+import { fadeInUp, scaleIn, staggerContainer } from "@/lib/motion";
 
 const trustPoints = [
   {
@@ -33,28 +34,33 @@ const trustPoints = [
   },
 ];
 
+const expertise = [
+  "AI-Generated Video Production & Editing",
+  "Brand Identity & Campaign Design",
+  "Technical SEO & Content Strategy",
+  "Custom Web Development & AI Integration",
+  "Performance Marketing & Analytics",
+  "Conversion Rate Optimization",
+];
+
 export function SEOSection() {
   return (
     <section id="seo" className="relative overflow-hidden py-24 md:py-32">
-      {/* Key-diff glow — right side accent */}
       <Image
         src="/images/why/key-diff-right-illustration.svg"
         alt=""
         width={495}
         height={461}
-        className="pointer-events-none absolute -right-16 top-20 h-auto w-[400px] opacity-30"
+        className="pointer-events-none absolute -right-16 top-20 h-auto w-[380px] opacity-20"
       />
-
-      {/* Works-left glow — left accent for bottom card */}
       <Image
         src="/images/why/works-left-illustration.svg"
         alt=""
         width={639}
         height={679}
-        className="pointer-events-none absolute -left-48 bottom-0 h-auto w-[500px] opacity-25"
+        className="pointer-events-none absolute -left-48 bottom-0 h-auto w-[450px] opacity-18"
       />
-
-      <div className="grid-overlay pointer-events-none absolute inset-0 opacity-40" />
+      <div className="grid-overlay pointer-events-none absolute inset-0 opacity-20" />
 
       <SectionWrapper>
         <SectionHeading
@@ -63,34 +69,44 @@ export function SEOSection() {
           description="We combine AI innovation with proven digital strategies to deliver solutions that perform, scale, and convert."
         />
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
+        >
           {trustPoints.map((point) => (
             <motion.div
               key={point.label}
-              variants={fadeInUp}
-              className="group relative overflow-hidden rounded-2xl border border-indigo-500/10 bg-surface p-8 text-center transition-all duration-300 hover:border-indigo-500/25"
+              variants={scaleIn}
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.2 }}
+              className="glass-card group relative overflow-hidden rounded-2xl p-8 text-center transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/5"
             >
-              <div className="grid-overlay pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-30" />
               <div className="relative z-10">
-                <div className="mb-3 bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-4xl font-bold text-transparent">
+                <div className="mb-3 bg-gradient-to-br from-white to-zinc-300 bg-clip-text text-4xl font-bold text-transparent">
                   {point.metric}
                 </div>
-                <h3 className="mb-2 text-sm font-bold uppercase tracking-wider text-white">
+                <h3 className="mb-2 text-xs font-bold uppercase tracking-wider text-white">
                   {point.label}
                 </h3>
-                <p className="text-sm leading-relaxed text-zinc-500">
+                <p className="text-xs leading-relaxed text-zinc-500">
                   {point.description}
                 </p>
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         <motion.div
           variants={fadeInUp}
-          className="relative mt-20 overflow-hidden rounded-2xl border border-indigo-500/10 bg-surface p-10 md:p-14"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          className="glass-card relative mt-16 overflow-hidden rounded-2xl p-10 md:p-14"
         >
-          <div className="grid-overlay pointer-events-none absolute inset-0 opacity-20" />
+          <div className="grid-overlay pointer-events-none absolute inset-0 opacity-15" />
           <div className="relative z-10 grid gap-12 md:grid-cols-2">
             <div>
               <h3 className="mb-4 text-2xl font-bold text-white">
@@ -113,20 +129,13 @@ export function SEOSection() {
                 Our Expertise Includes
               </h3>
               <ul className="space-y-3">
-                {[
-                  "AI-Generated Video Production & Editing",
-                  "Brand Identity & Campaign Design",
-                  "Technical SEO & Content Strategy",
-                  "Custom Web Development & AI Integration",
-                  "Performance Marketing & Analytics",
-                  "Conversion Rate Optimization",
-                ].map((item) => (
+                {expertise.map((item) => (
                   <li
                     key={item}
                     className="flex items-center gap-3 text-sm text-zinc-400"
                   >
-                    <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-indigo-500/20 text-xs text-indigo-400">
-                      ✓
+                    <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-indigo-500/15 text-indigo-400">
+                      <Check className="h-3 w-3" strokeWidth={2.5} />
                     </span>
                     {item}
                   </li>

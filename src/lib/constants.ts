@@ -19,11 +19,11 @@ export const siteConfig = {
 };
 
 export const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "About", href: "#seo" },
-  { label: "Contact", href: "#cta" },
+  { label: "Services", href: "/#services" },
+  { label: "Why Us", href: "/why-us" },
+  { label: "Newsletters", href: "/newsletters" },
+  { label: "Portfolio", href: "/#portfolio" },
+  { label: "Contact", href: "/#cta" },
 ];
 
 export const services = [
@@ -115,15 +115,15 @@ export const portfolioItems = [
 
 export const footerLinks = {
   services: [
-    { label: "AI Videos", href: "#services" },
-    { label: "Campaign Design", href: "#services" },
-    { label: "SEO Optimization", href: "#services" },
-    { label: "Web Solutions", href: "#services" },
+    { label: "AI Videos", href: "/#services" },
+    { label: "Campaign Design", href: "/#services" },
+    { label: "SEO Optimization", href: "/#services" },
+    { label: "Web Solutions", href: "/#services" },
   ],
   company: [
-    { label: "About", href: "#seo" },
-    { label: "Process", href: "#process" },
-    { label: "Portfolio", href: "#portfolio" },
+    { label: "Why Us", href: "/why-us" },
+    { label: "Newsletters", href: "/newsletters" },
+    { label: "Portfolio", href: "/#portfolio" },
     { label: "Careers", href: "#" },
   ],
   connect: [

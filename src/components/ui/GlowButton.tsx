@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { type ReactNode } from "react";
 
@@ -9,7 +10,10 @@ interface GlowButtonProps {
   variant?: "primary" | "secondary";
   className?: string;
   onClick?: () => void;
+  type?: "button" | "submit";
 }
+
+const MotionLink = motion.create(Link);
 
 export function GlowButton({
   children,
@@ -17,31 +21,41 @@ export function GlowButton({
   variant = "primary",
   className = "",
   onClick,
+  type = "button",
 }: GlowButtonProps) {
-  const baseStyles =
-    "relative inline-flex items-center justify-center gap-2 rounded-2xl px-8 py-3.5 text-sm font-bold tracking-wide transition-all duration-300";
+  const base =
+    "relative inline-flex items-center justify-center gap-2 rounded-2xl px-8 py-3.5 text-sm font-bold tracking-wide transition-all duration-300 cursor-pointer";
 
-  const variants = {
+  const styles = {
     primary:
-      "bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40",
+      "bg-indigo-600 text-white shadow-lg shadow-indigo-500/20 hover:bg-indigo-500 hover:shadow-indigo-500/30",
     secondary:
-      "border border-indigo-500/30 text-indigo-300 hover:bg-indigo-500/10 hover:border-indigo-400/50",
+      "border border-white/10 text-zinc-200 backdrop-blur-sm bg-white/4 hover:bg-white/8 hover:border-white/20",
   };
 
-  const Component = href ? motion.a : motion.button;
+  const motionProps = {
+    whileHover: { scale: 1.03 },
+    whileTap: { scale: 0.97 },
+    className: `${base} ${styles[variant]} ${className}`,
+  };
+
+  const glow = variant === "primary" && (
+    <span className="pointer-events-none absolute -inset-[1px] rounded-2xl bg-indigo-400/10 blur-sm" />
+  );
+
+  if (href) {
+    return (
+      <MotionLink href={href} {...motionProps}>
+        {glow}
+        <span className="relative z-10">{children}</span>
+      </MotionLink>
+    );
+  }
 
   return (
-    <Component
-      href={href}
-      onClick={onClick}
-      className={`${baseStyles} ${variants[variant]} ${className}`}
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.98 }}
-    >
-      {variant === "primary" && (
-        <span className="animate-glow-pulse pointer-events-none absolute -inset-[1px] rounded-2xl bg-gradient-to-r from-indigo-500/20 to-violet-500/20 blur-sm" />
-      )}
+    <motion.button type={type} onClick={onClick} {...motionProps}>
+      {glow}
       <span className="relative z-10">{children}</span>
-    </Component>
+    </motion.button>
   );
 }
