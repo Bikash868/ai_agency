@@ -13,15 +13,15 @@ export function Services() {
     <section id="services" className="relative overflow-hidden py-24 md:py-32">
       {/* Left glow illustration */}
       {/* <Image
-        src="/images/why/works-left-illustration.svg"
+        src="/images/section-start-illustration.png"
         alt=""
         width={639}
         height={679}
-        className="pointer-events-none absolute -left-40 top-0 h-auto w-[500px] opacity-40"
+        className="pointer-events-none absolute top-0 h-auto w-full h-full opacity-40"
       /> */}
       {/* Right network illustration */}
       <Image
-        src="/images/why/network-right-illustration.svg"
+        src="/images/network-right-illustration.svg"
         alt=""
         width={681}
         height={727}

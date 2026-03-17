@@ -47,18 +47,18 @@ export function SEOSection() {
   return (
     <section id="seo" className="relative overflow-hidden py-24 md:py-32">
       <Image
-        src="/images/why/key-diff-right-illustration.svg"
+        src="/images/key-diff-right-illustration.svg"
         alt=""
         width={495}
         height={461}
-        className="pointer-events-none absolute -right-10 top-30 h-auto w-[380px] opacity-20"
+        className="pointer-events-none absolute right-20 top-40 h-auto w-[380px] opacity-20"
       />
       <Image
-        src="/images/why/works-left-illustration.svg"
+        src="/images/pricing-illustration-top.svg"
         alt=""
         width={639}
         height={679}
-        className="pointer-events-none absolute -left-48 bottom-0 h-auto w-[450px] opacity-18"
+        className="pointer-events-none absolute left-48 bottom-10 h-auto w-[450px] opacity-90"
       />
       <div className="grid-overlay pointer-events-none absolute inset-0 opacity-20" />
 

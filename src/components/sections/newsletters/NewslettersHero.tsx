@@ -9,7 +9,7 @@ export function NewslettersHero() {
     <section className="noise-texture relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24">
       {/* Illustrations */}
       <Image
-        src="/images/why/taos-glow-bg-illustration.svg"
+        src="/images/taos-glow-bg-illustration.svg"
         alt=""
         width={1436}
         height={1239}

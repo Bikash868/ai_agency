@@ -115,3 +115,16 @@ body {
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.04);
 }
+
+/* More transparent glass — lets background illustrations bleed through */
+.glass-frosted {
+  background: rgba(10, 12, 30, 0.32);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.glass-frosted:hover {
+  background: rgba(10, 12, 30, 0.48);
+  border-color: rgba(99, 102, 241, 0.16);
+}

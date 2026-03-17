@@ -37,7 +37,7 @@ export function WhyUsDifferentiators() {
       <div className="grid-overlay pointer-events-none absolute inset-0 opacity-20" />
       {/* Illustration accent */}
       <Image
-        src="/images/why/network-right-illustration.svg"
+        src="/images/network-right-illustration.svg"
         alt=""
         width={800}
         height={700}

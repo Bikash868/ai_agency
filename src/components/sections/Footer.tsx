@@ -19,7 +19,7 @@ export function Footer() {
     <footer className="relative border-t border-white/5 bg-surface">
       <div className="grid-overlay pointer-events-none absolute inset-0 opacity-15" />
       <Image
-        src="/images/why/network-right-illustration.svg"
+        src="/images/network-right-illustration.svg"
         alt=""
         width={681}
         height={727}

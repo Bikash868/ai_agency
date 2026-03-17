@@ -147,7 +147,7 @@ export function Hero() {
     <section className="noise-texture relative flex min-h-screen items-center overflow-hidden">
       {/* Background illustrations */}
       <Image
-        src="/images/why/taos-glow-bg-illustration.svg"
+        src="/images/taos-glow-bg-illustration.svg"
         alt=""
         width={1436}
         height={1239}
@@ -155,7 +155,7 @@ export function Hero() {
         className="pointer-events-none absolute left-1/2 top-1/2 h-auto w-[130%] max-w-none -translate-x-1/2 -translate-y-1/2 opacity-50 md:w-[100%]"
       />
       <Image
-        src="/images/why/floating-icon-illustration.svg"
+        src="/images/section-center-illustration.svg"
         alt=""
         width={646}
         height={600}

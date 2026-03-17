@@ -26,7 +26,7 @@ export function NewslettersSubscribe() {
   return (
     <section id="subscribe" className="relative overflow-hidden py-24 md:py-32">
       <Image
-        src="/images/why/taos-glow-bg-illustration.svg"
+        src="/images/taos-glow-bg-illustration.svg"
         alt=""
         width={1436}
         height={1239}

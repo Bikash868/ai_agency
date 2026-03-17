@@ -42,7 +42,7 @@ export function WhyUsTeam() {
       <div className="grid-overlay pointer-events-none absolute inset-0 opacity-20" />
       {/* Illustration accent */}
       <Image
-        src="/images/why/taos-glow-bg-illustration.svg"
+        src="/images/taos-glow-bg-illustration.svg"
         alt=""
         width={1436}
         height={1239}
