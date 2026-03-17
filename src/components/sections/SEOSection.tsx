@@ -51,7 +51,7 @@ export function SEOSection() {
         alt=""
         width={495}
         height={461}
-        className="pointer-events-none absolute -right-16 top-20 h-auto w-[380px] opacity-20"
+        className="pointer-events-none absolute -right-10 top-30 h-auto w-[380px] opacity-20"
       />
       <Image
         src="/images/why/works-left-illustration.svg"

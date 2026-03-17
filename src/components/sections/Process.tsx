@@ -11,13 +11,13 @@ export function Process() {
   return (
     <section id="process" className="relative overflow-hidden py-24 md:py-32">
       {/* Problem illustration — large glow behind timeline */}
-      <Image
+      {/* <Image
         src="/images/why/problem-illustration.svg"
         alt=""
         width={834}
         height={827}
         className="pointer-events-none absolute left-1/2 top-1/2 h-auto w-[700px] -translate-x-1/2 -translate-y-1/2 opacity-25"
-      />
+      /> */}
 
       <div className="grid-overlay pointer-events-none absolute inset-0 opacity-40" />
 

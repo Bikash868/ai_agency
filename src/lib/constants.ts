@@ -28,6 +28,12 @@ export const navLinks = [
 
 export const services = [
   {
+    title: "Web & Mobile Apps",
+    description:
+      "Modern, performant websites and AI-integrated applications built with the latest technologies.",
+    icon: "code",
+  },
+  {
     title: "AI Promotional Videos",
     description:
       "Stunning AI-generated video content that captivates audiences and drives engagement across all platforms.",
@@ -44,12 +50,6 @@ export const services = [
     description:
       "Data-driven SEO strategies that boost your visibility, organic traffic, and search engine rankings.",
     icon: "search",
-  },
-  {
-    title: "Web & AI Solutions",
-    description:
-      "Modern, performant websites and AI-integrated applications built with the latest technologies.",
-    icon: "code",
   },
 ];
 

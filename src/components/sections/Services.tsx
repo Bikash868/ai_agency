@@ -12,20 +12,20 @@ export function Services() {
   return (
     <section id="services" className="relative overflow-hidden py-24 md:py-32">
       {/* Left glow illustration */}
-      <Image
+      {/* <Image
         src="/images/why/works-left-illustration.svg"
         alt=""
         width={639}
         height={679}
         className="pointer-events-none absolute -left-40 top-0 h-auto w-[500px] opacity-40"
-      />
+      /> */}
       {/* Right network illustration */}
       <Image
         src="/images/why/network-right-illustration.svg"
         alt=""
         width={681}
         height={727}
-        className="pointer-events-none absolute -right-32 bottom-0 h-auto w-[450px] opacity-30"
+        className="pointer-events-none absolute -right-5 -bottom-10 h-auto w-[450px] opacity-30"
       />
 
       <div className="dot-mesh pointer-events-none absolute inset-0 opacity-40" />
