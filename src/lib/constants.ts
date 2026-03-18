@@ -23,7 +23,7 @@ export const navLinks = [
   { label: "Why Us", href: "/why-us" },
   { label: "Newsletters", href: "/newsletters" },
   { label: "Products", href: "/#portfolio" },
-  { label: "Contact", href: "/#cta" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const services = [
@@ -123,7 +123,8 @@ export const footerLinks = {
   company: [
     { label: "Why Us", href: "/why-us" },
     { label: "Newsletters", href: "/newsletters" },
-    { label: "Portfolio", href: "/#portfolio" },
+    { label: "Products", href: "/#portfolio" },
+    { label: "Contact Us", href: "/contact" },
     { label: "Careers", href: "#" },
   ],
   connect: [

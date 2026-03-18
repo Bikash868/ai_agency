@@ -8,7 +8,7 @@ import { footerLinks } from "@/lib/constants";
 const socialLinks = [
   { label: "Twitter", href: "#", Icon: Twitter },
   { label: "LinkedIn", href: "#", Icon: Linkedin },
-  { label: "Instagram", href: "#", Icon: Instagram },
+  { label: "Instagram", href: "https://www.instagram.com/vibevisuals.art/", Icon: Instagram },
   { label: "Dribbble", href: "#", Icon: Dribbble },
 ];
 
@@ -30,13 +30,14 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-600 text-sm font-bold text-white">
-                V
-              </div>
-              <span className="text-lg font-bold tracking-tight text-white">
-                vibevisuals<span className="text-indigo-400">.art</span>
-              </span>
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/images/logo.png"
+                alt="vibevisuals.art"
+                width={180}
+                height={44}
+                className="h-10 w-auto object-contain"
+              />
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-zinc-500">
               AI-powered digital agency crafting stunning promotional videos,

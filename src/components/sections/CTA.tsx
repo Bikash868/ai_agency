@@ -72,7 +72,7 @@ export function CTA() {
               variants={fadeInUp}
               className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
             >
-              <GlowButton href="mailto:hello@vibevisuals.art" variant="primary">
+              <GlowButton href="/contact" variant="primary">
                 Start Your Project
               </GlowButton>
               <GlowButton href="/#services" variant="secondary">

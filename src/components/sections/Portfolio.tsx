@@ -276,7 +276,7 @@ export function Portfolio() {
           <p className="text-center text-sm text-zinc-600">
             All products are built and maintained by the VibeVisuals team.{" "}
             <Link
-              href="/#cta"
+              href="/contact"
               className="text-indigo-400 underline underline-offset-4 transition-colors hover:text-indigo-300"
             >
               Custom solutions available.

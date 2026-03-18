@@ -306,7 +306,7 @@ export function Hero() {
             variants={fadeInUp}
             className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center"
           >
-            <GlowButton href="/#cta" variant="primary">
+            <GlowButton href="/contact" variant="primary">
               Start Your Project
             </GlowButton>
             <GlowButton href="/#portfolio" variant="secondary">

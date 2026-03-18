@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { WhyUsHero } from "@/components/sections/why-us/WhyUsHero";
 import { WhyUsStats } from "@/components/sections/why-us/WhyUsStats";
+import { WhyUsAISpeed } from "@/components/sections/why-us/WhyUsAISpeed";
 import { WhyUsDifferentiators } from "@/components/sections/why-us/WhyUsDifferentiators";
 import { WhyUsTestimonials } from "@/components/sections/why-us/WhyUsTestimonials";
 import { WhyUsTeam } from "@/components/sections/why-us/WhyUsTeam";
@@ -17,6 +18,7 @@ export default function WhyUsPage() {
     <>
       <WhyUsHero />
       <WhyUsStats />
+      <WhyUsAISpeed />
       <WhyUsDifferentiators />
       <WhyUsTestimonials />
       <WhyUsTeam />

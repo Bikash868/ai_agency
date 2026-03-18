@@ -171,7 +171,7 @@ export function ProductDetailContent({ product }: { product: Product }) {
                   {product.comingSoon ? "Join the Waitlist" : "Request Demo"}
                   <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" strokeWidth={2} />
                 </Link>
-                <Link href="/#cta" className="inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/4 px-7 py-3.5 text-sm font-semibold text-zinc-200 backdrop-blur-sm transition-all hover:border-white/20 hover:bg-white/8">
+                <Link href="/contact" className="inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/4 px-7 py-3.5 text-sm font-semibold text-zinc-200 backdrop-blur-sm transition-all hover:border-white/20 hover:bg-white/8">
                   Contact Sales
                 </Link>
               </motion.div>
