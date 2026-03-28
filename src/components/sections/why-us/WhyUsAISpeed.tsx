@@ -6,7 +6,7 @@ import {
   Zap, Clock, CheckCircle2, Sparkles, BrainCircuit,
   ArrowRight, TimerOff, Hourglass,
 } from "lucide-react";
-import { fadeInUp, slideInLeft, slideInRight, staggerContainer } from "@/lib/motion";
+import { fadeInUp, staggerContainer } from "@/lib/motion";
 
 const comparisons = [
   { task: "Promotional Video",     traditional: "2–3 weeks", ai: "2–3 days",  saving: "80% faster" },
@@ -85,22 +85,24 @@ export function WhyUsAISpeed() {
 
           {/* Left — comparison table with progress bars */}
           <motion.div
-            variants={slideInLeft}
+            variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
             className="glass-frosted overflow-hidden rounded-3xl"
           >
             {/* Table header */}
-            <div className="grid grid-cols-[1fr_140px_140px] border-b border-white/6 px-6 py-4">
+            <div className="grid grid-cols-[1fr_auto_auto] gap-x-3 border-b border-white/6 px-4 py-4 sm:grid-cols-[1fr_140px_140px] sm:gap-x-0 sm:px-6">
               <span className="text-xs font-semibold uppercase tracking-wider text-zinc-600">Task</span>
               <div className="flex items-center gap-1.5 text-xs font-semibold text-zinc-600">
-                <Hourglass className="h-3.5 w-3.5" strokeWidth={2} />
-                Traditional
+                <Hourglass className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
+                <span className="hidden sm:inline">Traditional</span>
+                <span className="sm:hidden">Old</span>
               </div>
               <div className="flex items-center gap-1.5 text-xs font-semibold text-indigo-400">
-                <Sparkles className="h-3.5 w-3.5" strokeWidth={2} />
-                With Our AI
+                <Sparkles className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
+                <span className="hidden sm:inline">With Our AI</span>
+                <span className="sm:hidden">AI</span>
               </div>
             </div>
 
@@ -113,33 +115,33 @@ export function WhyUsAISpeed() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08, duration: 0.35, ease: "easeOut" }}
-                  className="group grid grid-cols-[1fr_140px_140px] items-center px-6 py-4 transition-colors duration-200 hover:bg-white/[0.025]"
+                  className="group grid grid-cols-[1fr_auto_auto] items-center gap-x-3 px-4 py-4 transition-colors duration-200 hover:bg-white/[0.025] sm:grid-cols-[1fr_140px_140px] sm:gap-x-0 sm:px-6"
                 >
                   {/* Task + saving badge */}
-                  <div className="flex items-center gap-3">
-                    <span className="text-sm font-medium text-zinc-200">{row.task}</span>
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <span className="text-xs font-medium text-zinc-200 sm:text-sm">{row.task}</span>
                     <span className="hidden rounded-full border border-indigo-500/20 bg-indigo-500/8 px-2 py-0.5 text-[10px] font-semibold text-indigo-300 sm:inline-block">
                       {row.saving}
                     </span>
                   </div>
 
                   {/* Traditional */}
-                  <div className="flex items-center gap-1.5">
-                    <Clock className="h-3.5 w-3.5 shrink-0 text-zinc-700" strokeWidth={1.6} />
-                    <span className="text-xs text-zinc-600 line-through">{row.traditional}</span>
+                  <div className="flex items-center gap-1 sm:gap-1.5">
+                    <Clock className="hidden h-3.5 w-3.5 shrink-0 text-zinc-700 sm:block" strokeWidth={1.6} />
+                    <span className="text-[11px] text-zinc-600 line-through sm:text-xs">{row.traditional}</span>
                   </div>
 
                   {/* AI */}
-                  <div className="flex items-center gap-1.5">
-                    <Zap className="h-3.5 w-3.5 shrink-0 text-indigo-400" strokeWidth={2} />
-                    <span className="text-xs font-semibold text-indigo-300">{row.ai}</span>
+                  <div className="flex items-center gap-1 sm:gap-1.5">
+                    <Zap className="hidden h-3.5 w-3.5 shrink-0 text-indigo-400 sm:block" strokeWidth={2} />
+                    <span className="text-[11px] font-semibold text-indigo-300 sm:text-xs">{row.ai}</span>
                   </div>
                 </motion.div>
               ))}
             </div>
 
             {/* Footer bar */}
-            <div className="flex items-center justify-between border-t border-white/6 bg-indigo-500/[0.04] px-6 py-4">
+            <div className="flex flex-col items-start gap-2 border-t border-white/6 bg-indigo-500/[0.04] px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
               <span className="text-xs text-zinc-500">Average across all project types</span>
               <span className="inline-flex items-center gap-1.5 rounded-full bg-indigo-500/10 px-3 py-1 text-xs font-semibold text-indigo-300">
                 <Zap className="h-3 w-3" strokeWidth={2.5} />
@@ -148,7 +150,7 @@ export function WhyUsAISpeed() {
             </div>
 
             {/* Conclusion */}
-            <div className="px-6 py-6">
+            <div className="px-4 py-6 sm:px-6">
               {/* Tagline */}
               <p className="mb-5 text-sm leading-relaxed text-zinc-400">
                 While competitors are still scheduling kickoff calls, your campaign is already live.
@@ -176,7 +178,7 @@ export function WhyUsAISpeed() {
 
           {/* Right — capabilities + promise card */}
           <motion.div
-            variants={slideInRight}
+            variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}

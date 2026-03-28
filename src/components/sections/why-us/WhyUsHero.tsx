@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Rocket } from "lucide-react";
-import { staggerContainer, fadeInUp, slideInRight } from "@/lib/motion";
+import { staggerContainer, fadeInUp } from "@/lib/motion";
 import { GlowButton } from "@/components/ui/GlowButton";
 
 const stats = [
@@ -101,7 +101,7 @@ export function WhyUsHero() {
 
           {/* Right: Image collage */}
           <motion.div
-            variants={slideInRight}
+            variants={fadeInUp}
             initial="hidden"
             animate="visible"
             className="relative hidden lg:block"

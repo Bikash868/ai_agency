@@ -16,7 +16,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative border-t border-white/5 bg-surface">
+    <footer className="relative overflow-hidden border-t border-white/5 bg-surface">
       <div className="grid-overlay pointer-events-none absolute inset-0 opacity-15" />
       <Image
         src="/images/network-right-illustration.svg"

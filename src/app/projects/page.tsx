@@ -7,7 +7,7 @@ import {
   ExternalLink, ShoppingBag, Sparkles, Globe, ArrowRight,
   CheckCircle2, Palette, Code2, Smartphone,
 } from "lucide-react";
-import { fadeInUp, staggerContainer, slideInLeft, slideInRight } from "@/lib/motion";
+import { fadeInUp, staggerContainer } from "@/lib/motion";
 
 // ── Project data ──────────────────────────────────────────────────────────────
 const projects = [
@@ -116,7 +116,7 @@ export default function ProjectsPage() {
           </motion.span>
 
           <motion.h1 variants={fadeInUp}
-            className="mb-4 text-4xl font-bold leading-tight tracking-tight text-white md:text-5xl lg:text-6xl">
+            className="mb-4 text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
             Live{" "}
             <span className="bg-gradient-to-br from-indigo-300 via-violet-300 to-indigo-400 bg-clip-text text-transparent">
               Client Projects
@@ -151,7 +151,7 @@ export default function ProjectsPage() {
             return (
               <motion.div
                 key={p.id}
-                variants={i % 2 === 0 ? slideInLeft : slideInRight}
+                variants={fadeInUp}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.15 }}
@@ -168,7 +168,7 @@ export default function ProjectsPage() {
                   {/* Gradient tint band */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${p.accent.gradient} opacity-0 transition-opacity duration-500 group-hover:opacity-100`} />
 
-                  <div className="relative z-10 grid gap-8 p-8 md:grid-cols-[1fr_300px] md:p-10">
+                  <div className="relative z-10 grid gap-6 p-5 sm:gap-8 sm:p-8 md:grid-cols-[1fr_300px] md:p-10">
 
                     {/* ── Left: info ── */}
                     <div className="flex flex-col">
@@ -214,7 +214,7 @@ export default function ProjectsPage() {
                     </div>
 
                     {/* ── Right: URL card ── */}
-                    <div className="flex flex-col gap-4">
+                    <div className="flex min-w-0 flex-col gap-4">
                       {/* Browser chrome + iframe preview */}
                       <div className="overflow-hidden rounded-2xl border border-white/8 bg-[#0a0b18]">
                         {/* Chrome bar */}
@@ -224,26 +224,24 @@ export default function ProjectsPage() {
                               <span key={c} className={`h-2 w-2 rounded-full ${c}`} />
                             ))}
                           </div>
-                          <div className="flex flex-1 items-center gap-1.5 rounded-md border border-white/6 bg-black/30 px-2 py-0.5">
+                          <div className="flex min-w-0 flex-1 items-center gap-1.5 rounded-md border border-white/6 bg-black/30 px-2 py-0.5">
                             <Globe className="h-2.5 w-2.5 shrink-0 text-zinc-600" strokeWidth={1.6} />
                             <span className="truncate text-[9px] text-zinc-500">{p.displayUrl}</span>
                           </div>
                         </div>
 
                         {/* Scaled iframe viewport */}
-                        <div className="relative h-[188px] w-full overflow-hidden">
+                        <div className="relative h-[140px] w-full overflow-hidden sm:h-[188px]">
                           <iframe
                             src={p.url}
                             title={p.name}
                             scrolling="no"
                             loading="lazy"
+                            className="absolute left-0 top-0 pointer-events-none border-none w-[1510px] sm:w-[1280px]"
                             style={{
-                              width: "1280px",
                               height: "800px",
                               transform: "scale(0.234)",
                               transformOrigin: "0 0",
-                              border: "none",
-                              pointerEvents: "none",
                             }}
                           />
                           {/* Click-through overlay that opens the real site */}
@@ -267,16 +265,16 @@ export default function ProjectsPage() {
                         href={p.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group/btn flex items-center justify-center gap-2 rounded-2xl bg-indigo-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 transition-all hover:bg-indigo-500 hover:shadow-indigo-500/30"
+                        className="group/btn flex items-center justify-center gap-2 rounded-2xl bg-indigo-600 px-4 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 transition-all hover:bg-indigo-500 hover:shadow-indigo-500/30 sm:px-6"
                       >
-                        <ExternalLink className="h-4 w-4" strokeWidth={2} />
+                        <ExternalLink className="h-4 w-4 shrink-0" strokeWidth={2} />
                         Visit Live Site
-                        <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover/btn:translate-x-1" strokeWidth={2} />
+                        <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-200 group-hover/btn:translate-x-1" strokeWidth={2} />
                       </a>
 
                       <Link href="/contact"
-                        className="flex items-center justify-center gap-1.5 rounded-2xl border border-white/8 bg-white/[0.03] px-6 py-3 text-sm font-medium text-zinc-400 transition-all hover:border-white/16 hover:text-zinc-200">
-                        <Sparkles className="h-3.5 w-3.5" strokeWidth={2} />
+                        className="flex items-center justify-center gap-1.5 rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3 text-sm font-medium text-zinc-400 transition-all hover:border-white/16 hover:text-zinc-200 sm:px-6">
+                        <Sparkles className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
                         Build something like this
                       </Link>
                     </div>
@@ -290,7 +288,7 @@ export default function ProjectsPage() {
         {/* ── Bottom CTA ── */}
         <motion.div
           variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-          className="mt-20 overflow-hidden rounded-3xl border border-indigo-500/15 bg-gradient-to-r from-indigo-500/[0.06] via-violet-500/[0.04] to-indigo-500/[0.06] px-8 py-10 text-center"
+          className="mt-20 overflow-hidden rounded-3xl border border-indigo-500/15 bg-gradient-to-r from-indigo-500/[0.06] via-violet-500/[0.04] to-indigo-500/[0.06] px-5 py-10 text-center sm:px-8"
         >
           <Image src="/images/page-illustration.svg" alt="" width={1440} height={427}
             className="pointer-events-none absolute -bottom-2 left-0 h-auto w-full opacity-[0.06]" />

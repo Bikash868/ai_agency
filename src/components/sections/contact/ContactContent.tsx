@@ -9,7 +9,7 @@ import {
   CheckCircle2, Mail, Phone, MapPin, Clock, Twitter, Linkedin,
   Instagram, Star,
 } from "lucide-react";
-import { fadeInUp, fadeIn, scaleIn, staggerContainer, staggerFast, slideInLeft, slideInRight } from "@/lib/motion";
+import { fadeInUp, fadeIn, scaleIn, staggerContainer } from "@/lib/motion";
 
 // ── Data ─────────────────────────────────────────────────────────────────────
 
@@ -247,7 +247,7 @@ export function ContactContent() {
             </span>
           </motion.div>
 
-          <motion.h1 variants={fadeInUp} className="mb-5 text-5xl font-bold leading-[1.1] tracking-tight text-white md:text-6xl lg:text-7xl">
+          <motion.h1 variants={fadeInUp} className="mb-5 text-3xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
             Let&apos;s{" "}
             <span className="bg-gradient-to-br from-indigo-300 via-indigo-400 to-violet-400 bg-clip-text text-transparent">
               Connect
@@ -266,7 +266,7 @@ export function ContactContent() {
 
           <div className="relative z-10">
             <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-12 text-center">
-              <h2 className="text-3xl font-bold text-white md:text-4xl">Your Journey With Us</h2>
+              <h2 className="text-2xl font-bold text-white sm:text-3xl md:text-4xl">Your Journey With Us</h2>
               <p className="mx-auto mt-3 max-w-xl text-base text-zinc-400">A simple 4-step process from idea to launch</p>
             </motion.div>
 
@@ -428,7 +428,7 @@ export function ContactContent() {
           <div className="relative z-10 grid gap-10 lg:grid-cols-[1fr_380px]">
 
             {/* ── FORM ── */}
-            <motion.div variants={slideInLeft} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}>
+            <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}>
               <AnimatePresence mode="wait">
                 {!submitted ? (
                   <motion.div
@@ -521,7 +521,7 @@ export function ContactContent() {
 
             {/* ── CONTACT INFO ── */}
             <motion.div
-              variants={slideInRight}
+              variants={fadeInUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.1 }}
@@ -601,7 +601,7 @@ export function ContactContent() {
               variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
               className="mb-12 text-center"
             >
-              <h2 className="text-3xl font-bold text-white md:text-4xl">Trusted by Industry Leaders</h2>
+              <h2 className="text-2xl font-bold text-white sm:text-3xl md:text-4xl">Trusted by Industry Leaders</h2>
               <p className="mx-auto mt-3 max-w-xl text-base text-zinc-400">See what our partners say about working with us</p>
             </motion.div>
 

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { staggerContainer, fadeInUp, slideInLeft, slideInRight } from "@/lib/motion";
+import { staggerContainer, fadeInUp } from "@/lib/motion";
 
 const differentiators = [
   {
@@ -87,7 +87,7 @@ export function WhyUsDifferentiators() {
             >
               {/* Text */}
               <motion.div
-                variants={i % 2 === 0 ? slideInLeft : slideInRight}
+                variants={fadeInUp}
                 className={i % 2 === 1 ? "lg:col-start-2" : ""}
               >
                 <span className="mb-4 inline-block bg-gradient-to-br from-white/20 to-white/5 bg-clip-text text-5xl font-bold text-transparent">
@@ -103,7 +103,7 @@ export function WhyUsDifferentiators() {
 
               {/* Image */}
               <motion.div
-                variants={i % 2 === 0 ? slideInRight : slideInLeft}
+                variants={fadeInUp}
                 className={`relative ${i % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}`}
               >
                 <div className="glass-card relative overflow-hidden rounded-2xl">

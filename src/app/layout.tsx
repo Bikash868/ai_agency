@@ -87,7 +87,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inriaSans.variable} font-inria_sans antialiased`}>
+      <body className={`${inriaSans.variable} font-inria_sans antialiased overflow-x-hidden`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
