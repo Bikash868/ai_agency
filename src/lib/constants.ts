@@ -24,9 +24,10 @@ export const siteConfig = {
 
 export const navLinks = [
   { label: "Services", href: "/#services" },
+  { label: "Products", href: "/#portfolio" },
+  { label: "Projects", href: "/projects" },
   { label: "Why Us", href: "/why-us" },
   { label: "Newsletters", href: "/newsletters" },
-  { label: "Products", href: "/#portfolio" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -125,16 +126,16 @@ export const footerLinks = {
     { label: "Web Solutions", href: "/#services" },
   ],
   company: [
+    { label: "Products", href: "/#portfolio" },
+    { label: "Our Work", href: "/projects" },
     { label: "Why Us", href: "/why-us" },
     { label: "Newsletters", href: "/newsletters" },
-    { label: "Products", href: "/#portfolio" },
     { label: "Contact Us", href: "/contact" },
-    { label: "Careers", href: "#" },
   ],
   connect: [
-    { label: "Twitter / X", href: "https://x.com" },
-    { label: "LinkedIn", href: "https://linkedin.com" },
-    { label: "Instagram", href: "https://instagram.com" },
-    { label: "Dribbble", href: "https://dribbble.com" },
+    { label: "Twitter / X", href: "https://www.instagram.com/vibevisuals.art" },
+    { label: "LinkedIn", href: "https://www.instagram.com/vibevisuals.art" },
+    { label: "Instagram", href: "https://www.instagram.com/vibevisuals.art" },
+    { label: "Dribbble", href: "https://www.instagram.com/vibevisuals.art" },
   ],
 };
