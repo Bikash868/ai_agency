@@ -17,9 +17,33 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const issue = getNewsletterBySlug(slug);
   if (!issue) return { title: "Not Found" };
+  const url = `https://vibevisuals.art/newsletters/${slug}`;
   return {
-    title: issue.title,
+    title: `${issue.title} | vibevisuals.art`,
     description: issue.excerpt,
+    keywords: [
+      issue.tag,
+      "AI marketing India",
+      "digital marketing newsletter",
+      "vibevisuals.art",
+      "SEO tips India",
+    ],
+    alternates: { canonical: url },
+    openGraph: {
+      title: issue.title,
+      description: issue.excerpt,
+      type: "article",
+      url,
+      publishedTime: issue.date,
+      authors: ["vibevisuals.art"],
+      images: [{ url: issue.image.startsWith("/") ? `https://vibevisuals.art${issue.image}` : issue.image, width: 1200, height: 630, alt: issue.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: issue.title,
+      description: issue.excerpt,
+      images: [issue.image.startsWith("/") ? `https://vibevisuals.art${issue.image}` : issue.image],
+    },
   };
 }
 
@@ -27,6 +51,22 @@ export default async function NewsletterDetailPage({ params }: Props) {
   const { slug } = await params;
   const issue = getNewsletterBySlug(slug);
   if (!issue) notFound();
+
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: issue.title,
+    description: issue.excerpt,
+    author: { "@type": "Organization", name: "vibevisuals.art", url: "https://vibevisuals.art" },
+    publisher: {
+      "@type": "Organization",
+      name: "vibevisuals.art",
+      logo: { "@type": "ImageObject", url: "https://vibevisuals.art/images/logo.png" },
+    },
+    url: `https://vibevisuals.art/newsletters/${slug}`,
+    mainEntityOfPage: `https://vibevisuals.art/newsletters/${slug}`,
+    image: issue.image.startsWith("/") ? `https://vibevisuals.art${issue.image}` : issue.image,
+  };
 
   const tagColors: Record<string, string> = {
     SEO: "bg-emerald-500/15 text-emerald-400 border-emerald-500/20",
@@ -39,6 +79,10 @@ export default async function NewsletterDetailPage({ params }: Props) {
 
   return (
     <main className="min-h-screen bg-background pb-24 pt-28">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       {/* Subtle background */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
         <div className="absolute left-1/4 top-1/4 h-[500px] w-[500px] rounded-full bg-indigo-600/5 blur-[120px]" />

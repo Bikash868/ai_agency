@@ -45,6 +45,41 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
 };
 
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "vibevisuals.art",
+  url: "https://vibevisuals.art",
+  logo: "https://vibevisuals.art/images/logo.png",
+  description:
+    "India's leading AI digital agency based in Bengaluru. We create AI promotional videos, campaign designs, SEO strategies, and web solutions.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Bengaluru",
+    addressRegion: "Karnataka",
+    addressCountry: "IN",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "sales.vibevisuals@gmail.com",
+    telephone: "+91-9304147313",
+    contactType: "customer service",
+    availableLanguage: ["English", "Hindi"],
+  },
+  sameAs: [
+    "https://www.instagram.com/vibevisuals.art/",
+  ],
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "vibevisuals.art",
+  url: "https://vibevisuals.art",
+  description: "AI-powered digital agency India — promotional videos, design, SEO, web solutions.",
+  publisher: { "@type": "Organization", name: "vibevisuals.art" },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -53,6 +88,14 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${inriaSans.variable} font-inria_sans antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
         <ScrollProgress />
         <Navbar />
         <main>{children}</main>

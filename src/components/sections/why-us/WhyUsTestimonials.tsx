@@ -8,50 +8,50 @@ import { staggerContainer, fadeInUp, scaleIn } from "@/lib/motion";
 const testimonials = [
   {
     quote:
-      "vibevisuals.art transformed our product launch. The AI-generated video campaign drove a 4× increase in engagement in the first week — we've never seen anything like it.",
-    name: "Sarah Chen",
-    title: "Head of Marketing, Nexora Tech",
-    avatar: "/assets/testimonials/sarah.jpg",
-    rating: 5,
-  },
-  {
-    quote:
-      "Their SEO work doubled our organic traffic in 90 days. But what really impressed me was how they tied every optimization to actual business metrics, not just rankings.",
-    name: "Marcus Rivera",
-    title: "CEO, BuildFast SaaS",
-    avatar: "/assets/testimonials/marcus.jpg",
-    rating: 5,
-  },
-  {
-    quote:
-      "We've worked with four agencies before. vibevisuals.art is the only one that delivered on time, on brand, and with a result we were genuinely proud to show our board.",
-    name: "Priya Mehta",
-    title: "CMO, Orbis Ventures",
-    avatar: "/assets/testimonials/priya.jpg",
-    rating: 5,
-  },
-  {
-    quote:
-      "The poster series they designed became our most-shared social content ever. Pure quality — visually stunning and strategically sharp at the same time.",
-    name: "James Okafor",
-    title: "Brand Director, Lumio Studio",
-    avatar: "/assets/testimonials/james.jpg",
-    rating: 5,
-  },
-  {
-    quote:
-      "Incredible speed without cutting corners. They rebuilt our entire web presence in three weeks — clean code, great performance, and it looks like a million dollars.",
-    name: "Anya Petrov",
-    title: "Founder, GridSpace",
-    avatar: "/assets/testimonials/anya.jpg",
-    rating: 5,
-  },
-  {
-    quote:
       "What separates them is that they genuinely understand AI. Not just tools — the strategy. Our campaign felt effortless and the ROI speaks for itself.",
     name: "David Kim",
     title: "Growth Lead, Vero Analytics",
     avatar: "/assets/testimonials/david.jpg",
+    rating: 5,
+  },
+  {
+    quote:
+      "We run a small café in Indore and never thought we needed a proper brand. Vibe Visuals made us a reel and a poster series — our footfall went up 40% in just one month. Best decision we made!",
+    name: "Ravi Sharma",
+    title: "Owner, Chai & Co. Café",
+    avatar: "/assets/testimonials/david.jpg",
+    rating: 5,
+  },
+  {
+    quote:
+      "My mehndi studio in Nagpur was getting no online enquiries. They shot a short promo video, designed my Instagram posts, and set up my Google listing. Now I get 15–20 bookings a week from Instagram alone!",
+    name: "Pushpa",
+    title: "Founder, Pushpa Mehndi Arts",
+    avatar: "/assets/testimonials/sarah.jpg",
+    rating: 4.5,
+  },
+  {
+    quote:
+      "We sell hardware and construction tools online from Surat. Vibe Visuals redesigned our product listing images and ran a targeted ad campaign — our monthly orders doubled within 6 weeks.",
+    name: "Ketan Patel",
+    title: "Co-Founder, BoltKart Hardware",
+    avatar: "",
+    rating: 5,
+  },
+  {
+    quote:
+      "I have a boutique in Jaipur selling handloom fabrics. They created beautiful reels showcasing my products and helped me reach customers across India. Online sales went from near zero to ₹2L a month!",
+    name: "Meena Agarwal",
+    title: "Owner, Rangrez Boutique",
+    avatar: "/assets/testimonials/anya.jpg",
+    rating: 4,
+  },
+  {
+    quote:
+      "Our tiffin service in Pune was word-of-mouth only. Vibe Visuals built us a simple website and ran WhatsApp-friendly promotional videos. We now have 120 daily subscribers — up from 35.",
+    name: "Ashok Kulkarni",
+    title: "Founder, Ghar Ka Khana Tiffins",
+    avatar: "",
     rating: 5,
   },
 ];
@@ -121,13 +121,19 @@ export function WhyUsTestimonials() {
                   &ldquo;{t.quote}&rdquo;
                 </p>
                 <div className="mt-6 flex items-center gap-3 border-t border-white/5 pt-6">
-                  <Image
-                    src={t.avatar}
-                    alt={t.name}
-                    width={44}
-                    height={44}
-                    className="h-11 w-11 rounded-full object-cover ring-2 ring-indigo-500/20"
-                  />
+                  {t.avatar ? (
+                    <Image
+                      src={t.avatar}
+                      alt={t.name}
+                      width={44}
+                      height={44}
+                      className="h-11 w-11 rounded-full object-cover ring-2 ring-indigo-500/20"
+                    />
+                  ) : (
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-indigo-500/15 ring-2 ring-indigo-500/20 text-sm font-bold text-indigo-300">
+                      {t.name.split(" ").map((w) => w[0]).slice(0, 2).join("")}
+                    </div>
+                  )}
                   <div>
                     <div className="text-sm font-semibold text-white">{t.name}</div>
                     <div className="text-xs text-zinc-500">{t.title}</div>
