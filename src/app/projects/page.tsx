@@ -5,12 +5,46 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   ExternalLink, ShoppingBag, Sparkles, Globe, ArrowRight,
-  CheckCircle2, Palette, Code2, Smartphone,
+  CheckCircle2, Palette, Code2, Smartphone, Truck, Monitor, Play,
 } from "lucide-react";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 
+// ── Project types ────────────────────────────────────────────────────────────
+type LiveProject = {
+  id: string;
+  name: string;
+  tagline: string;
+  category: string;
+  status: "Live";
+  description: string;
+  highlights: string[];
+  tech: string[];
+  accent: { gradient: string; border: string; badge: string; dot: string; iconBorder: string; iconBg: string; iconText: string };
+  Icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
+  illustration: string;
+  url: string;
+  displayUrl: string;
+};
+
+type DevProject = {
+  id: string;
+  name: string;
+  tagline: string;
+  category: string;
+  status: "In Development";
+  description: string;
+  highlights: string[];
+  tech: string[];
+  accent: { gradient: string; border: string; badge: string; dot: string; iconBorder: string; iconBg: string; iconText: string };
+  Icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
+  illustration: string;
+  videos: { web: string; mobile: string };
+};
+
+type Project = LiveProject | DevProject;
+
 // ── Project data ──────────────────────────────────────────────────────────────
-const projects = [
+const projects: Project[] = [
   {
     id: "lumiere",
     name: "Lumière",
@@ -26,10 +60,29 @@ const projects = [
       "Smooth scroll & micro-animations",
       "Mobile-first responsive design",
     ],
-    tech: ["Next.js", "Tailwind CSS", "Framer Motion"],
-    accent: { gradient: "from-violet-600/20 to-indigo-600/20", border: "border-violet-500/20", badge: "bg-violet-500/10 text-violet-300 border-violet-500/20", dot: "bg-violet-400" },
+    tech: ["E-Commerce", "Web application", "Jewelry Store"],
+    accent: { gradient: "from-violet-600/20 to-indigo-600/20", border: "border-violet-500/20", badge: "bg-violet-500/10 text-violet-300 border-violet-500/20", dot: "bg-violet-400", iconBorder: "border-violet-500/20", iconBg: "bg-violet-500/10", iconText: "text-violet-300" },
     Icon: ShoppingBag,
     illustration: "/images/pricing-illustration.svg",
+  },
+  {
+    id: "haul",
+    name: "Haul",
+    tagline: "Packers & Movers Super-App",
+    category: "Logistics & Transport",
+    status: "In Development",
+    description:
+      "A full-featured packers & movers platform similar to Porter — real-time tracking, fare estimation, driver assignment, and more. Currently in v1, we customize the entire app per client and add features on demand.",
+    highlights: [
+      "Real-time shipment tracking & driver assignment",
+      "Instant fare estimation with route optimization",
+      "White-label ready — fully customizable per client",
+    ],
+    tech: ["Logistics & Transport", "Web", "Mobile", "Real time tracking", "Maps Intergration"],
+    accent: { gradient: "from-amber-600/20 to-orange-600/20", border: "border-amber-500/20", badge: "bg-amber-500/10 text-amber-300 border-amber-500/20", dot: "bg-amber-400", iconBorder: "border-amber-500/20", iconBg: "bg-amber-500/10", iconText: "text-amber-300" },
+    Icon: Truck,
+    illustration: "/images/pricing-illustration.svg",
+    videos: { web: "/projects/Haul-web.mov", mobile: "/projects/Haul-mobile.mov" },
   },
   {
     id: "pushpa-mehndi",
@@ -46,8 +99,8 @@ const projects = [
       "Design gallery with 5 bridal collections",
       "Pricing tiers from ₹3,500 – ₹15,000",
     ],
-    tech: ["React", "Tailwind CSS", "Responsive Design"],
-    accent: { gradient: "from-rose-600/20 to-orange-600/20", border: "border-rose-500/20", badge: "bg-rose-500/10 text-rose-300 border-rose-500/20", dot: "bg-rose-400" },
+    tech: ["Service Booking", "Web application", "Mehndi Artist Booking"],
+    accent: { gradient: "from-rose-600/20 to-orange-600/20", border: "border-rose-500/20", badge: "bg-rose-500/10 text-rose-300 border-rose-500/20", dot: "bg-rose-400", iconBorder: "border-rose-500/20", iconBg: "bg-rose-500/10", iconText: "text-rose-300" },
     Icon: Palette,
     illustration: "/images/floating-icon-illustration.svg",
   },
@@ -66,8 +119,8 @@ const projects = [
       "Brand-accurate IndiGo visual identity",
       "Smooth performance across all devices",
     ],
-    tech: ["Next.js", "Framer Motion", "GSAP", "Tailwind CSS"],
-    accent: { gradient: "from-sky-600/20 to-indigo-600/20", border: "border-sky-500/20", badge: "bg-sky-500/10 text-sky-300 border-sky-500/20", dot: "bg-sky-400" },
+    tech: ["Portfolio", "Web application", "Animations"],
+    accent: { gradient: "from-sky-600/20 to-indigo-600/20", border: "border-sky-500/20", badge: "bg-sky-500/10 text-sky-300 border-sky-500/20", dot: "bg-sky-400", iconBorder: "border-sky-500/20", iconBg: "bg-sky-500/10", iconText: "text-sky-300" },
     Icon: Sparkles,
     illustration: "/images/page-illustration.svg",
   },
@@ -75,8 +128,8 @@ const projects = [
 
 // ── Stat bar ──────────────────────────────────────────────────────────────────
 const stats = [
-  { value: "200+", label: "Projects Delivered" },
-  { value: "3",    label: "Live Projects Showcased" },
+  { value: "50+", label: "Projects Delivered" },
+  { value: "4+",    label: "Projects Showcased" },
   { value: "24 h", label: "Average Turnaround" },
   { value: "100%", label: "Client Satisfaction" },
 ];
@@ -146,8 +199,9 @@ export default function ProjectsPage() {
 
         {/* ── Project cards ── */}
         <div className="space-y-10">
-          {projects.map((p, i) => {
+          {projects.map((p) => {
             const Icon = p.Icon;
+            const isLive = p.status === "Live";
             return (
               <motion.div
                 key={p.id}
@@ -161,39 +215,39 @@ export default function ProjectsPage() {
                   transition={{ type: "spring", stiffness: 260, damping: 24 }}
                   className="glass-frosted group relative overflow-hidden rounded-3xl"
                 >
-                  {/* Illustration bg */}
                   <Image src={p.illustration} alt="" width={600} height={500}
                     className="pointer-events-none absolute -right-16 -top-10 h-auto w-[360px] opacity-[0.07] transition-opacity duration-500 group-hover:opacity-[0.12]" />
 
-                  {/* Gradient tint band */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${p.accent.gradient} opacity-0 transition-opacity duration-500 group-hover:opacity-100`} />
 
                   <div className="relative z-10 grid gap-6 p-5 sm:gap-8 sm:p-8 md:grid-cols-[1fr_300px] md:p-10">
 
                     {/* ── Left: info ── */}
                     <div className="flex flex-col">
-                      {/* Top row */}
                       <div className="mb-5 flex flex-wrap items-center gap-3">
-                        {/* Icon */}
-                        <div className={`flex h-11 w-11 items-center justify-center rounded-xl border ${p.accent.gradient.includes("violet") ? "border-violet-500/20 bg-violet-500/10" : "border-rose-500/20 bg-rose-500/10"}`}>
-                          <Icon className={`h-5 w-5 ${p.accent.gradient.includes("violet") ? "text-violet-300" : "text-rose-300"}`} strokeWidth={1.6} />
+                        <div className={`flex h-11 w-11 items-center justify-center rounded-xl border ${p.accent.iconBorder} ${p.accent.iconBg}`}>
+                          <Icon className={`h-5 w-5 ${p.accent.iconText}`} strokeWidth={1.6} />
                         </div>
-                        {/* Category */}
                         <span className={`rounded-full border px-3 py-0.5 text-xs font-semibold ${p.accent.badge}`}>
                           {p.category}
                         </span>
-                        {/* Live badge */}
-                        <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/8 px-3 py-0.5 text-xs font-semibold text-emerald-400">
-                          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
-                          Live
-                        </span>
+                        {isLive ? (
+                          <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/8 px-3 py-0.5 text-xs font-semibold text-emerald-400">
+                            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
+                            Live
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/20 bg-amber-500/8 px-3 py-0.5 text-xs font-semibold text-amber-400">
+                            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-amber-400" />
+                            {p.status}
+                          </span>
+                        )}
                       </div>
 
                       <h2 className="mb-1.5 text-2xl font-bold text-white md:text-3xl">{p.name}</h2>
                       <p className="mb-1.5 text-sm font-medium text-zinc-400">{p.tagline}</p>
                       <p className="mb-5 text-sm leading-relaxed text-zinc-500">{p.description}</p>
 
-                      {/* Highlights */}
                       <ul className="mb-6 space-y-2">
                         {p.highlights.map((h) => (
                           <li key={h} className="flex items-start gap-2.5 text-sm text-zinc-400">
@@ -203,7 +257,6 @@ export default function ProjectsPage() {
                         ))}
                       </ul>
 
-                      {/* Tech stack */}
                       <div className="mt-auto flex flex-wrap gap-2">
                         {p.tech.map((t) => (
                           <span key={t} className="rounded-lg border border-white/6 bg-white/[0.04] px-2.5 py-0.5 text-[11px] font-medium text-zinc-400">
@@ -213,64 +266,111 @@ export default function ProjectsPage() {
                       </div>
                     </div>
 
-                    {/* ── Right: URL card ── */}
+                    {/* ── Right: preview ── */}
                     <div className="flex min-w-0 flex-col gap-4">
-                      {/* Browser chrome + iframe preview */}
-                      <div className="overflow-hidden rounded-2xl border border-white/8 bg-[#0a0b18]">
-                        {/* Chrome bar */}
-                        <div className="flex items-center gap-2 border-b border-white/6 bg-white/[0.03] px-3 py-2.5">
-                          <div className="flex gap-1.5">
-                            {["bg-red-500/70","bg-yellow-500/70","bg-green-500/70"].map((c) => (
-                              <span key={c} className={`h-2 w-2 rounded-full ${c}`} />
-                            ))}
+                      {isLive ? (
+                        <>
+                          {/* Browser chrome + iframe preview */}
+                          <div className="overflow-hidden rounded-2xl border border-white/8 bg-[#0a0b18]">
+                            <div className="flex items-center gap-2 border-b border-white/6 bg-white/[0.03] px-3 py-2.5">
+                              <div className="flex gap-1.5">
+                                {["bg-red-500/70","bg-yellow-500/70","bg-green-500/70"].map((c) => (
+                                  <span key={c} className={`h-2 w-2 rounded-full ${c}`} />
+                                ))}
+                              </div>
+                              <div className="flex min-w-0 flex-1 items-center gap-1.5 rounded-md border border-white/6 bg-black/30 px-2 py-0.5">
+                                <Globe className="h-2.5 w-2.5 shrink-0 text-zinc-600" strokeWidth={1.6} />
+                                <span className="truncate text-[9px] text-zinc-500">{(p as LiveProject).displayUrl}</span>
+                              </div>
+                            </div>
+                            <div className="relative h-[140px] w-full overflow-hidden sm:h-[188px]">
+                              <iframe
+                                src={(p as LiveProject).url}
+                                title={p.name}
+                                scrolling="no"
+                                loading="lazy"
+                                className="absolute left-0 top-0 pointer-events-none border-none w-[1510px] sm:w-[1280px]"
+                                style={{ height: "800px", transform: "scale(0.234)", transformOrigin: "0 0" }}
+                              />
+                              <a
+                                href={(p as LiveProject).url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="absolute inset-0 z-10 flex items-center justify-center bg-black/0 transition-all duration-300 hover:bg-black/40 group/overlay"
+                                aria-label={`Open ${p.name}`}
+                              >
+                                <span className="flex translate-y-2 items-center gap-2 rounded-full border border-white/20 bg-black/60 px-4 py-2 text-xs font-semibold text-white opacity-0 backdrop-blur-sm transition-all duration-300 group-hover/overlay:translate-y-0 group-hover/overlay:opacity-100">
+                                  <ExternalLink className="h-3.5 w-3.5" strokeWidth={2} />
+                                  Open live site
+                                </span>
+                              </a>
+                            </div>
                           </div>
-                          <div className="flex min-w-0 flex-1 items-center gap-1.5 rounded-md border border-white/6 bg-black/30 px-2 py-0.5">
-                            <Globe className="h-2.5 w-2.5 shrink-0 text-zinc-600" strokeWidth={1.6} />
-                            <span className="truncate text-[9px] text-zinc-500">{p.displayUrl}</span>
-                          </div>
-                        </div>
 
-                        {/* Scaled iframe viewport */}
-                        <div className="relative h-[140px] w-full overflow-hidden sm:h-[188px]">
-                          <iframe
-                            src={p.url}
-                            title={p.name}
-                            scrolling="no"
-                            loading="lazy"
-                            className="absolute left-0 top-0 pointer-events-none border-none w-[1510px] sm:w-[1280px]"
-                            style={{
-                              height: "800px",
-                              transform: "scale(0.234)",
-                              transformOrigin: "0 0",
-                            }}
-                          />
-                          {/* Click-through overlay that opens the real site */}
                           <a
-                            href={p.url}
+                            href={(p as LiveProject).url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="absolute inset-0 z-10 flex items-center justify-center bg-black/0 transition-all duration-300 hover:bg-black/40 group/overlay"
-                            aria-label={`Open ${p.name}`}
+                            className="group/btn flex items-center justify-center gap-2 rounded-2xl bg-indigo-600 px-4 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 transition-all hover:bg-indigo-500 hover:shadow-indigo-500/30 sm:px-6"
                           >
-                            <span className="flex translate-y-2 items-center gap-2 rounded-full border border-white/20 bg-black/60 px-4 py-2 text-xs font-semibold text-white opacity-0 backdrop-blur-sm transition-all duration-300 group-hover/overlay:translate-y-0 group-hover/overlay:opacity-100">
-                              <ExternalLink className="h-3.5 w-3.5" strokeWidth={2} />
-                              Open live site
-                            </span>
+                            <ExternalLink className="h-4 w-4 shrink-0" strokeWidth={2} />
+                            Visit Live Site
+                            <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-200 group-hover/btn:translate-x-1" strokeWidth={2} />
                           </a>
-                        </div>
-                      </div>
+                        </>
+                      ) : (
+                        <>
+                          {/* Video previews for dev projects */}
+                          <div className="grid grid-cols-[1fr_auto] gap-3">
+                            {/* Web video */}
+                            <div className="overflow-hidden rounded-2xl border border-white/8 bg-[#0a0b18]">
+                              <div className="flex items-center gap-2 border-b border-white/6 bg-white/[0.03] px-3 py-2">
+                                <Monitor className="h-3 w-3 text-zinc-600" strokeWidth={1.6} />
+                                <span className="text-[9px] font-medium text-zinc-500">Web App</span>
+                              </div>
+                              <div className="relative">
+                                <video
+                                  src={(p as DevProject).videos.web}
+                                  autoPlay
+                                  muted
+                                  loop
+                                  playsInline
+                                  className="h-[140px] w-full object-cover object-top sm:h-[188px]"
+                                />
+                                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0a0b18]/40 to-transparent" />
+                              </div>
+                            </div>
 
-                      {/* CTA */}
-                      <a
-                        href={p.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group/btn flex items-center justify-center gap-2 rounded-2xl bg-indigo-600 px-4 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 transition-all hover:bg-indigo-500 hover:shadow-indigo-500/30 sm:px-6"
-                      >
-                        <ExternalLink className="h-4 w-4 shrink-0" strokeWidth={2} />
-                        Visit Live Site
-                        <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-200 group-hover/btn:translate-x-1" strokeWidth={2} />
-                      </a>
+                            {/* Mobile video */}
+                            <div className="w-[80px] overflow-hidden rounded-2xl border border-white/8 bg-[#0a0b18] sm:w-[90px]">
+                              <div className="flex items-center justify-center gap-1.5 border-b border-white/6 bg-white/[0.03] px-2 py-2">
+                                <Smartphone className="h-3 w-3 text-zinc-600" strokeWidth={1.6} />
+                                <span className="text-[9px] font-medium text-zinc-500">Mobile</span>
+                              </div>
+                              <div className="relative">
+                                <video
+                                  src={(p as DevProject).videos.mobile}
+                                  autoPlay
+                                  muted
+                                  loop
+                                  playsInline
+                                  className="h-[140px] w-full object-cover object-top sm:h-[188px]"
+                                />
+                                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0a0b18]/40 to-transparent" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <Link
+                            href="/contact"
+                            className="group/btn flex items-center justify-center gap-2 rounded-2xl bg-indigo-600 px-4 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 transition-all hover:bg-indigo-500 hover:shadow-indigo-500/30 sm:px-6"
+                          >
+                            <Sparkles className="h-4 w-4 shrink-0" strokeWidth={2} />
+                            Get This for Your Business
+                            <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-200 group-hover/btn:translate-x-1" strokeWidth={2} />
+                          </Link>
+                        </>
+                      )}
 
                       <Link href="/contact"
                         className="flex items-center justify-center gap-1.5 rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3 text-sm font-medium text-zinc-400 transition-all hover:border-white/16 hover:text-zinc-200 sm:px-6">
